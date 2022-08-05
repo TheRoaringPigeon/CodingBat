@@ -6,6 +6,8 @@ The word "is" should not be immediately preceeded or followed by a letter -- so 
 
 public String notReplace(String str) {
   return str.replaceAll(("(?<=\\s|^|[^\\w])is(?=\\s|$|[^\\w])"), "is not");
+}
+
   /*
   * replaceAll(match-this-string, replace-with-this-string);
   * ?<= means "Look at the IMMEDIATLY previous index
@@ -22,4 +24,4 @@ public String notReplace(String str) {
   * Putting that together, we're saying:
   * if you find the word "is" check that what's before it is the start of the string, whitespace, or a non word character (i.e. 1, 2, 3, *, &, -)
   * and what's before it is the end of the string, whitespace, or a non word character.
-}
+  */
