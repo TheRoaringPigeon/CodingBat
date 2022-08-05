@@ -1,1 +1,26 @@
+/*
+We'll say that 2 strings "match" if they are non-empty and their first chars are the same. 
+Loop over and then return the given array of non-empty strings as follows: 
+if a string matches an earlier string in the array, swap the 2 strings in the array. 
+A particular first char can only cause 1 swap, so once a char has caused a swap, its later swaps are disabled. 
+Using a map, this can be solved making just one pass over the array. 
+More difficult than it looks.
+*/
 
+public String[] firstSwap(String[] strings) {
+  Map<String, Integer> hm = new HashMap<>();
+  for (int i = 0; i < strings.length; i++){
+    String key = strings[i].substring(0, 1);
+    if (hm.get(key) != null){
+      if (hm.get(key) != -1){
+        String temp = strings[hm.get(key)];
+      strings[hm.get(key)] = strings[i];
+      strings[i] = temp;
+      hm.put(key, -1);
+      }
+    }else{
+      hm.put(key, i);
+    }
+  }
+  return strings;
+}
