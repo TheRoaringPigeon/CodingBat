@@ -1,0 +1,29 @@
+/*
+Given a string, return true if the number of appearances of "is" anywhere in the string 
+is equal to the number of appearances of "not" anywhere in the string (case sensitive).
+*/
+
+public boolean equalIsNot(String str) {
+  if (str.isEmpty()){
+    return true;
+  }
+  if (str.length() <= 4){
+    return false;
+  }
+  int nNum = 0, iNum = 0;
+  for (int i = 0; i <= str.length() - 2; i++){
+    if (i == str.length() - 2){
+      if (str.substring(i, str.length()).equals("is")){
+        iNum++;
+      }
+    }else{
+      if (str.substring(i, i+2).equals("is")){
+        iNum++;
+      }
+      if (str.substring(i, i+3).equals("not")){
+        nNum++;
+      }
+    }
+  }
+  return iNum == nNum;
+}
