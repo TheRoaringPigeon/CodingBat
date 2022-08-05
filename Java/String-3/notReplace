@@ -6,5 +6,20 @@ The word "is" should not be immediately preceeded or followed by a letter -- so 
 
 public String notReplace(String str) {
   return str.replaceAll(("(?<=\\s|^|[^\\w])is(?=\\s|$|[^\\w])"), "is not");
-
+  /*
+  * replaceAll(match-this-string, replace-with-this-string);
+  * ?<= means "Look at the IMMEDIATLY previous index
+  * ?=  means "Look at the IMMEDIATLY following index
+  * (?<= stuff)is(?= stuff), "is not" means: match a substring where the stuff comes before and follows "is".
+  * \\s means whitespace.
+  * | means "or".
+  * ^ by itself means "Start of the string"
+  * [] is a container for things.
+  * ^ inside of the container means "not"
+  * \\w means a word character
+  * so [^\\w] means is not any of the word characters
+  * $ means end of the string
+  * Putting that together, we're saying:
+  * if you find the word "is" check that what's before it is the start of the string, whitespace, or a non word character (i.e. 1, 2, 3, *, &, -)
+  * and what's before it is the end of the string, whitespace, or a non word character.
 }
